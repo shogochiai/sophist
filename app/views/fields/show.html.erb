@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @field.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @field.content %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @field.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_field_path(@field) %> |
+<%= link_to 'Back', fields_path %>

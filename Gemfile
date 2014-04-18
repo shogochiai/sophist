@@ -57,6 +57,8 @@ gem "active_attr"
 gem "mini_magick"
 gem "carrierwave"
 gem "bootstrap-sass"
+gem "kakurenbo"
+
 group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
@@ -69,6 +71,7 @@ end
 group :development do
   gem "pry-rails"
   gem "better_errors"
+  gem "binding_of_caller"
   gem "letter_opener"
   gem "annotate"
   gem "thin"
