@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me]
+Rails.application.config.sorcery.submodules = [:external, :remember_me]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -70,8 +70,15 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid] .
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:twitter]
 
+
+  # add this file to .gitignore BEFORE putting any secret keys in here, or use a system like Figaro to abstract it!!! 
+  #
+  config.twitter.key = "zjh8LUSpO2lAL1NYZbYTDiv9P"
+  config.twitter.secret = "FnK24bn6sSwsmob6tbIXMP0eeumlBYmoBV8orvYikDAMW63J7N"
+  config.twitter.callback_url = "http://127.0.0.1:3000/auth/twitter"
+  config.twitter.user_info_mapping = {:username => "screen_name"}
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -410,7 +417,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
 
     # User's identifier in authentications class.
